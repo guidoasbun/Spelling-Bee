@@ -1,0 +1,1 @@
+![SpellingBeeImg.png](SpellingBeeImg.png)
