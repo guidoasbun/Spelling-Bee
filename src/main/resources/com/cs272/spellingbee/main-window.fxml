@@ -5,12 +5,23 @@
 <?import javafx.scene.layout.VBox?>
 
 <?import javafx.scene.control.Button?>
-<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.cs272.spellingbee.SpellingBeeController">
-    <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
-    </padding>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<BorderPane>
+    <top>
+        <Label text="Heading"/>
+        <Label text="menu"/>
+    </top>
+    <center>
+        <HBox>
+            <GridPane>
+                <Label text="Buttons"/>
+            </GridPane>
+            <VBox>
+                <Label text="Input Words"/>
+            </VBox>
+        </HBox>
+    </center>
+</BorderPane>
 
-    <Label fx:id="welcomeText"/>
-    <Button text="Hello!" onAction="#onHelloButtonClick"/>
-</VBox>
