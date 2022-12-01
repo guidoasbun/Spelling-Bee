@@ -10,7 +10,7 @@ import java.io.IOException;
 public class SpellingBee extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(SpellingBee.class.getResource("hello-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(SpellingBee.class.getResource("main-window.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 320, 240);
         stage.setTitle("Spelling Bee!");
         stage.setScene(scene);
