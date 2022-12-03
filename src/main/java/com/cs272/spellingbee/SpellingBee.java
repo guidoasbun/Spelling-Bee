@@ -11,8 +11,9 @@ public class SpellingBee extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(SpellingBee.class.getResource("main-window.fxml"));
+        setUserAgentStylesheet(STYLESHEET_CASPIAN);
         Scene scene = new Scene(fxmlLoader.load(), 1080, 790);
-        stage.setTitle("Spelling Bee!");
+        stage.setTitle("Spelling Bee");
         stage.setScene(scene);
         stage.show();
     }

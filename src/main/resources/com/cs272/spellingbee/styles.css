@@ -1,0 +1,35 @@
+@font-face {
+    src: url("karnakpro-bold.ttf");
+}
+
+.menu {
+    -fx-padding: 10;
+    -fx-font-size: 15;
+}
+
+#headerLabel {
+    -fx-font-family: "KarnakPro-Bold";
+    -fx-font-size: 35;
+    -fx-padding: 10 10 10 22;
+}
+
+#currentDateLabel {
+    -fx-font-size: 24;
+    -fx-padding: 13;
+}
+
+#namesLabel {
+    -fx-font-size: 15;
+    -fx-padding: 0 0 10 22;
+}
+
+#wordsFoundTitle {
+    -fx-font-size: 15;
+    -fx-padding: 10 0 10 0;
+}
+
+#correctWordListView {
+    -fx-background-color: -fx-box-border, -fx-control-inner-background;
+    -fx-background-insets: 0, 1;
+    -fx-padding: 10;
+}
