@@ -18,7 +18,7 @@
                     <Label id="headerLabel" text="Spelling Bee" />
                     <Label id="currentDateLabel" fx:id="currentDateDisplay" />
                 </HBox>
-                <Label id="namesLabel" text="Programmed by:  Kuan Lei and Guido Asbun" />
+                <Label id="namesLabel" text="Programmed by:  Kuan Lee and Guido Asbun" />
             </VBox>
         </top>
     <center>
