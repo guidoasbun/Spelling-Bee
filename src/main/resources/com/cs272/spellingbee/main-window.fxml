@@ -3,31 +3,35 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane stylesheets="@styles.css" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cs272.spellingbee.SpellingBeeController">
+<BorderPane stylesheets="@styles.css" xmlns="http://javafx.com/javafx/11.0.14-internal"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cs272.spellingbee.SpellingBeeController">
 
-        <top>
-            <VBox>
-                <MenuBar>
-                    <Menu text="Menu">
-                        <MenuItem onAction="#handleResetButton" text="Reset" />
-                        <SeparatorMenuItem />
-                        <MenuItem onAction="#handleCloseProgramButton" text="Close" />
-                    </Menu>
-                </MenuBar>
-                <HBox>
-                    <Label id="headerLabel" text="Spelling Bee" />
-                    <Label id="currentDateLabel" fx:id="currentDateDisplay" />
-                </HBox>
-                <Label id="namesLabel" text="Programmed by:  Kuan Lee and Guido Asbun" />
-            </VBox>
-        </top>
+    <top>
+        <VBox>
+            <MenuBar>
+                <Menu text="Menu">
+                    <MenuItem onAction="#handleResetButton" text="Reset"/>
+                    <SeparatorMenuItem/>
+                    <MenuItem onAction="#handleCloseProgramButton" text="Close"/>
+                </Menu>
+            </MenuBar>
+            <HBox>
+                <Label id="headerLabel" text="Spelling Bee"/>
+                <Label id="currentDateLabel" fx:id="currentDateDisplay"/>
+            </HBox>
+            <Label id="namesLabel" text="Programmed by:  Kuan Lei and Guido Asbun"/>
+        </VBox>
+    </top>
+
     <center>
-        <Label text="Buttons" />
+        <Label text="Buttons"/>
     </center>
+
     <right>
         <VBox>
-            <Label id="wordsFoundTitle" text="You have found 2 words" />
-            <ListView id="correctWordListView" prefHeight="622" prefWidth="540"/>
+            <Label id="wordsFoundTitle" fx:id="correctWordCount" text="You have found 2 words"/>
+            <ListView fx:id="correctWordsListView" prefHeight="622" prefWidth="540"/>
+
         </VBox>
     </right>
 
