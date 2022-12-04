@@ -28,8 +28,9 @@
     -fx-padding: 10 0 10 0;
 }
 
-#correctWordListView {
+.list-view {
     -fx-background-color: -fx-box-border, -fx-control-inner-background;
     -fx-background-insets: 0, 1;
     -fx-padding: 10;
+    -fx-font-size: 15;
 }
