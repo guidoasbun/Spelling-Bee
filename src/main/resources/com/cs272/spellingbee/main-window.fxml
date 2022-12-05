@@ -29,9 +29,8 @@
 
     <right>
         <VBox>
-            <Label id="wordsFoundTitle" fx:id="correctWordCount" text="You have found 2 words"/>
-            <ListView fx:id="correctWordsListView" prefHeight="622" prefWidth="540"/>
-
+            <Label id="wordsCountTitle" fx:id="correctWordCount"/>
+            <ListView fx:id="correctWordsListView"/>
         </VBox>
     </right>
 

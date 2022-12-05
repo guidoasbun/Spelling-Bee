@@ -15,7 +15,7 @@
 
 #currentDateLabel {
     -fx-font-size: 24;
-    -fx-padding: 13;
+    -fx-padding: 14;
 }
 
 #namesLabel {
@@ -23,9 +23,9 @@
     -fx-padding: 0 0 10 22;
 }
 
-#wordsFoundTitle {
+#wordsCountTitle {
     -fx-font-size: 15;
-    -fx-padding: 10 0 10 0;
+    -fx-padding: 10;
 }
 
 .list-view {
@@ -33,4 +33,6 @@
     -fx-background-insets: 0, 1;
     -fx-padding: 10;
     -fx-font-size: 15;
+    -fx-pref-height: 622;
+    -fx-pref-width: 540;
 }
