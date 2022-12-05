@@ -7,6 +7,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+
 public class SpellingBeeController {
 
     // Instance Variables
@@ -15,10 +16,8 @@ public class SpellingBeeController {
     // Instance FXML variables
     @FXML
     private Label currentDateDisplay;
-
     @FXML
     private ListView<String> correctWordsListView;
-
     @FXML
     private Label correctWordCount;
 
@@ -31,12 +30,17 @@ public class SpellingBeeController {
 
 
 
-        // TODO: Remove
+
+        // TODO: Remove Test Data
         // Mock Data to test likedList<String> to display
-        correctWordList.addLast("Word1");
-        correctWordList.addLast("Word2");
-        correctWordList.addLast("Word3");
+        correctWordList.addLast("Word 1");
+        correctWordList.addLast("Word 2");
+        correctWordList.addLast("Word 3");
         correctWordList.getCorrectWordListView(correctWordsListView);
+
+
+        // Initializes the correct word count message
+        correctWordCount.setText("You have found " + correctWordList.getSize() + " words");
     }
 
     // Action handler Methods
@@ -50,12 +54,14 @@ public class SpellingBeeController {
     public void handleResetButton() {
         // TODO:
         // Clear out the input display
-        System.out.println("Reset Button Pressed");
+
 
         // Clears out the correct word list
         correctWordList.removeAll();
         correctWordsListView.getItems().clear();
         correctWordList.getCorrectWordListView(correctWordsListView);
+        // Resets the words count
+        correctWordCount.setText("You have found " + correctWordList.getSize() + " words");
     }
 
     // Private Helper Functions
