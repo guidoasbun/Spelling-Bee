@@ -7,6 +7,10 @@
     -fx-font-size: 15;
 }
 
+.menu-item {
+    -fx-padding: 12;
+}
+
 #headerLabel {
     -fx-font-family: "KarnakPro-Bold";
     -fx-font-size: 35;
