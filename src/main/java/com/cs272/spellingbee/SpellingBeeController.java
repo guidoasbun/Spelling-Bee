@@ -9,6 +9,7 @@ import javafx.scene.control.ListView;
 import org.json.simple.parser.ParseException;
 
 import java.io.IOException;
+import java.io.StringReader;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -60,6 +61,7 @@ public class SpellingBeeController {
 
         System.out.println(gameVariables.getLetters());
         System.out.println(gameVariables.getCenterWord());
+        System.out.println(gameVariables.checkWord("jjhgjbmjhkjbkj"));
 
 
         // Initializes the correct word count message
