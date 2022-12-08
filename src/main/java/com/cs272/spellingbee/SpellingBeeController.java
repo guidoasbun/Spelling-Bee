@@ -1,7 +1,7 @@
 package com.cs272.spellingbee;
-
 import com.cs272.spellingbee.Objects.CorrectWordsList.CorrectWordList;
 import com.cs272.spellingbee.Objects.GameVariables.GameVariables;
+
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -9,7 +9,6 @@ import javafx.scene.control.ListView;
 import org.json.simple.parser.ParseException;
 
 import java.io.IOException;
-import java.io.StringReader;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
