@@ -1,6 +1,6 @@
 package com.cs272.spellingbee;
 
-import com.cs272.spellingbee.Objects.CorrectWordsList.SinglyLinkedList;
+import com.cs272.spellingbee.Objects.CorrectWordsList.CorrectWordList;
 import com.cs272.spellingbee.Objects.GameVariables.GameVariables;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
@@ -14,13 +14,13 @@ import java.time.format.DateTimeFormatter;
 
 public class SpellingBeeController {
 
-    // Instance Variables
-    // Creates a new SinglyLinkedList object
-    // + addLast() method adds a new node to the end of the list
-    // + getCorrectWordsList() : ListView<String> method returns the list
-    // + getSize() : int
-    // + removeAll() method removes all nodes from the list
-    private final SinglyLinkedList<String> correctWordList = new SinglyLinkedList<>();
+    // Creates a new CorrectWordListClass
+    // - SinglyLinkedList<String> correctWordList
+    // + addWord(String word) - adds a word to the list
+    // + getCorrectWordListView(ListView<String> correctWordsListView) - gets the list view of the correct words
+    // + getSize() - gets the size of the list
+    // + removeAll() - removes all the words from the list
+    private final CorrectWordList correctWordList = new CorrectWordList();
 
     // Creates a new GameVariables object
     // - String letters
@@ -50,11 +50,12 @@ public class SpellingBeeController {
         currentDateDisplay.setText(getCurrentDate());
 
 
+
         // TODO: REMOVE Test Data
         // Mock Data to test likedList<String> to display
-        correctWordList.addLast("Word 1");
-        correctWordList.addLast("Word 2");
-        correctWordList.addLast("Word 3");
+        correctWordList.addWord("Word 1");
+        correctWordList.addWord("Word 2");
+        correctWordList.addWord("Word 3");
         correctWordList.getCorrectWordListView(correctWordsListView);
 
         System.out.println(gameVariables.getLetters());
