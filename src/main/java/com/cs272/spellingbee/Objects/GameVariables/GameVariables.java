@@ -5,7 +5,6 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Scanner;
@@ -13,9 +12,9 @@ import java.util.Scanner;
 public class GameVariables {
     private final String letters;
     private final String centerWord;
-    private StringChainHashSet wordList = new StringChainHashSet();
+    private final StringChainHashSet wordList = new StringChainHashSet();
 
-    public GameVariables() throws ParseException, IOException {
+    public GameVariables() throws ParseException {
         StringBuilder gameVariablesData =  new StringBuilder();
         int responseCode = 0;
         Object objectToParse;
@@ -30,7 +29,7 @@ public class GameVariables {
 
             // code 200 is good
             if(responseCode != 200) {
-                throw  new RuntimeException("Connection was not made. Using local variables. HttpResponseCode: " + responseCode);
+                throw  new RuntimeException("Connection was not made. HttpResponseCode: " + responseCode);
             } else {
                 Scanner scanner = new Scanner(url.openStream());
 

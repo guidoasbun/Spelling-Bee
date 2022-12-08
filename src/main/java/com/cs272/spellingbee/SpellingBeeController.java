@@ -29,7 +29,7 @@ public class SpellingBeeController {
     // + getLetters() : String
     // + getCenterWord() : String
     // + checkWord(String word) : boolean
-    GameVariables gameVariables = new GameVariables();
+    private final GameVariables gameVariables = new GameVariables();
 
     // Instance FXML variables
     @FXML
@@ -56,6 +56,9 @@ public class SpellingBeeController {
         correctWordList.addLast("Word 2");
         correctWordList.addLast("Word 3");
         correctWordList.getCorrectWordListView(correctWordsListView);
+
+        System.out.println(gameVariables.getLetters());
+        System.out.println(gameVariables.getCenterWord());
 
 
         // Initializes the correct word count message

@@ -2,7 +2,7 @@ package com.cs272.spellingbee.Objects.CorrectWordsList;
 
 public class SinglyLinkedListNode<E> {
     // INSTANCE VARIABLES
-    private E element;
+    private final E element;
     private SinglyLinkedListNode<E> nextNode;
 
     // CONSTRUCTORS

@@ -4,9 +4,9 @@ import java.util.Objects;
 
 public class StringChainHashSet {
     // Instance Variables
-    private int numberOfBuckets;
+    private final int numberOfBuckets;
     private int size;
-    private StringChainHashSetNode[] bucket;
+    private final StringChainHashSetNode[] bucket;
 
     // Constructor
     public StringChainHashSet() {

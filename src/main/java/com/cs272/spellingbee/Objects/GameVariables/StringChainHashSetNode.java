@@ -2,7 +2,7 @@ package com.cs272.spellingbee.Objects.GameVariables;
 
 public class StringChainHashSetNode {
     // Instance variables
-    private String element;
+    private final String element;
     private StringChainHashSetNode nextNode;
 
     // Constructor
