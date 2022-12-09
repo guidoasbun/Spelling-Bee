@@ -58,6 +58,7 @@ public class SpellingBeeController {
         center.getChildren().add(selection.getGridPane());
         selection.getEnter().setOnAction(even->{
             userSelectedWord = selection.getWord();
+            System.out.println(userSelectedWord);
             //TODO: Check if the word is corrent if it's corrent 
             //      then we can add the corrented word into
             //      the correctWordList
@@ -105,5 +106,4 @@ public class SpellingBeeController {
         LocalDateTime currentDate = LocalDateTime.now();
         return formattedTime.format(currentDate);
     }
-
 }

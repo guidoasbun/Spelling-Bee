@@ -115,7 +115,7 @@ public class ButtonPadAndSelectedLetters {
     }
 
     /*
-     * private helper fucntion for handler the delete button
+     * private helper fucntion for handler the delete
      */
     private void hadlerDeleted(Button delete)
     {
