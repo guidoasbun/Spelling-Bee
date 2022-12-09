@@ -26,15 +26,16 @@ public class ButtonPadAndSelectedLetters {
     public ButtonPadAndSelectedLetters(String lettersForSelection)
     {
         gridPane = new GridPane();
-        gridPane.setAlignment(Pos.CENTER);
-        gridPane.setHgap(GAP);
-        gridPane.setVgap(GAP);
         polygonButton = new PolygonButton[AMOUNT_OF_BUTTON];
         hBox = new HBox();
         labelStack = new DynamicStack<Label>();
-        gridPane.add(hBox, 0,0,3,3);
         delete = new Button("Delete");
         enter = new Button("Enter");
+
+        gridPane.setAlignment(Pos.CENTER);
+        gridPane.setHgap(GAP);
+        gridPane.setVgap(GAP);
+        gridPane.add(hBox, 0,0,3,3);
         setupLetterButtonAndSlecetedLabel(lettersForSelection);
         gridPane.add(delete, 0, 4);
         gridPane.add(enter, 2, 4);
