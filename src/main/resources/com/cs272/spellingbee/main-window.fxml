@@ -24,7 +24,8 @@
     </top>
 
     <center>
-        <Label text="Buttons"/>
+        <Pane fx:id = "center">
+        </Pane>
     </center>
 
     <right>

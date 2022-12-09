@@ -1,13 +1,19 @@
 package com.cs272.spellingbee;
 
 import com.cs272.spellingbee.Objects.CorrectWordsList.SinglyLinkedList;
+import com.cs272.spellingbee.Objects.leftSideModular.ButtonPadAndSelectedLetters;
+import com.cs272.spellingbee.Objects.leftSideModular.PolygonButton;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-
+import javafx.scene.layout.Pane;
+import javafx.scene.control.Button;
+import javafx.scene.shape.Polygon;
+import javafx.scene.layout.GridPane;
+import javafx.geometry.Insets;
 public class SpellingBeeController {
 
     // Instance Variables
@@ -20,6 +26,11 @@ public class SpellingBeeController {
     private ListView<String> correctWordsListView;
     @FXML
     private Label correctWordCount;
+    @FXML
+    private Pane center;
+
+    // we can use this string to test the word;
+    private String userSelectedWord;
 
     // Initialize function -
     // Initial state of app before it starts
@@ -29,7 +40,28 @@ public class SpellingBeeController {
         currentDateDisplay.setText(getCurrentDate());
 
 
-
+        // Initialize the girdpane for buttons
+        /* Create a new ButtonPadAndSelectedLetters
+         *  - GridPane gridPane;
+            - HBox hBox;
+            - PolygonButton[] polygonButton;
+            - DynamicStack<Label> labelStack;
+            - Button delete;
+            - Button enter;
+            + getGridPane(): GridPane
+            + deletedLetter: String
+            + getWord: String
+            + getEnter: Button
+         */
+        String letterForSelection = "hikaemr";
+        ButtonPadAndSelectedLetters selection = new ButtonPadAndSelectedLetters(letterForSelection);
+        center.getChildren().add(selection.getGridPane());
+        selection.getEnter().setOnAction(even->{
+            userSelectedWord = selection.getWord();
+            //TODO: Check if the word is corrent if it's corrent 
+            //      then we can add the corrented word into
+            //      the correctWordList
+        });
 
         // TODO: Remove Test Data
         // Mock Data to test likedList<String> to display
@@ -41,6 +73,8 @@ public class SpellingBeeController {
 
         // Initializes the correct word count message
         correctWordCount.setText("You have found " + correctWordList.getSize() + " words");
+
+
     }
 
     // Action handler Methods
@@ -71,4 +105,5 @@ public class SpellingBeeController {
         LocalDateTime currentDate = LocalDateTime.now();
         return formattedTime.format(currentDate);
     }
+
 }
