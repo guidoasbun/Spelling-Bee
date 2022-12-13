@@ -3,6 +3,7 @@ import com.cs272.spellingbee.Objects.CorrectWordsList.CorrectWordList;
 import com.cs272.spellingbee.Objects.GameVariables.GameVariables;
 
 import com.cs272.spellingbee.Objects.CorrectWordsList.SinglyLinkedList;
+import com.cs272.spellingbee.Objects.GameVariables.StringChainHashSet;
 import com.cs272.spellingbee.Objects.leftSideModular.ButtonPadAndSelectedLetters;
 import com.cs272.spellingbee.Objects.leftSideModular.PolygonButton;
 import javafx.application.Platform;
@@ -21,6 +22,12 @@ import javafx.scene.layout.GridPane;
 import javafx.geometry.Insets;
 public class SpellingBeeController {
 
+    // TODO: Delete test variables
+    // Test Variables
+    private final String letters = "ofwhci";
+    private final String centerLetter = "s";
+    private final StringChainHashSet wordList = new StringChainHashSet();
+
     // Creates a new CorrectWordListClass
     // - SinglyLinkedList<String> correctWordList
     // + addWord(String word) - adds a word to the list
@@ -29,6 +36,8 @@ public class SpellingBeeController {
     // + removeAll() - removes all the words from the list
     private final CorrectWordList correctWordList = new CorrectWordList();
 
+    // This is commented out so we do not make too many calls to API
+    // TODO: uncomment
     // Creates a new GameVariables object
     // - String letters
     // - String centerWord
@@ -36,7 +45,7 @@ public class SpellingBeeController {
     // + getLetters() : String
     // + getCenterWord() : String
     // + checkWord(String word) : boolean
-    private final GameVariables gameVariables = new GameVariables();
+//    private final GameVariables gameVariables = new GameVariables();
 
     // Instance FXML variables
     @FXML
@@ -60,6 +69,11 @@ public class SpellingBeeController {
     public void initialize() throws ParseException, IOException {
         // Sets the display to show current date
         currentDateDisplay.setText(getCurrentDate());
+
+        // TODO: Delete test variables
+        wordList.add("chichis");
+        wordList.add("chicos");
+        wordList.add("chics");
 
 
         // Initialize the girdpane for buttons
@@ -93,15 +107,8 @@ public class SpellingBeeController {
         correctWordList.addWord("Word 3");
         correctWordList.getCorrectWordListView(correctWordsListView);
 
-        System.out.println(gameVariables.getLetters());
-        System.out.println(gameVariables.getCenterWord());
-        System.out.println(gameVariables.checkWord("jjhgjbmjhkjbkj"));
-
-
         // Initializes the correct word count message
         correctWordCount.setText("You have found " + correctWordList.getSize() + " words");
-
-
     }
 
     // Action handler Methods
