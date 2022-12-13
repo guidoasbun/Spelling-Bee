@@ -2,9 +2,13 @@ package com.cs272.spellingbee.Objects.leftSideModular;
 
 import javafx.scene.control.Button;
 import javafx.scene.shape.Polygon;
+import javafx.scene.text.Font;
 
 public class PolygonButton extends Button{
     // INSTANT VARIABLE
+    private final double MIN_HEIGHT = 80.0;
+    private final double MIN_WIDTH = 90.0;
+    private final Font font = new Font("Courier New", 36);
     private Polygon polygon;
     
     // CONSTRUCTURE
@@ -16,15 +20,17 @@ public class PolygonButton extends Button{
             0.0, 90.0,0.0,120.0,51.96152422706631, 
             90.0,103.92304845413263,
             30.0,103.92304845413263});
+            
         super.setText(" ");
         super.setShape(polygon);
-        super.setMinHeight(50);
-        super.setMinWidth(50);
+        super.setMinSize(MIN_WIDTH, MIN_HEIGHT);
+        super.setFont(font);
     }
+
     public PolygonButton(char selctionLetter)
     {
         this();
-        setLetter(selctionLetter);
+        setLetter(Character.toUpperCase(selctionLetter));
     }
 
     // INSTANT METHOD

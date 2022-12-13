@@ -1,12 +1,15 @@
 package com.cs272.spellingbee.Objects.leftSideModular;
 
-import com.cs272.spellingbee.Objects.leftSideModular.PolygonButton;
-import com.cs272.spellingbee.Objects.leftSideModular.DynamicStack;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
-import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.control.Button;
+import javafx.scene.text.Font;
+import javafx.geometry.Pos;
+import javafx.geometry.VPos;
+import javafx.geometry.HPos;
+
+
 
 public class ButtonPadAndSelectedLetters {
     // INSTANT VARIABLE
@@ -15,6 +18,9 @@ public class ButtonPadAndSelectedLetters {
     private final int AMOUNT_OF_MIDDLE_LETTER = 1;
     private final double GAP = 20.0;
     private final int AMOUNT_OF_BUTTON = 7;
+    private final double BUTTON_MIN_HEIGHT = 50.0;
+    private final double BUTTON_MIN_WIDTH = 60.0;
+
     private GridPane gridPane;
     private HBox hBox;
     private PolygonButton[] polygonButton;
@@ -32,15 +38,23 @@ public class ButtonPadAndSelectedLetters {
         delete = new Button("Delete");
         enter = new Button("Enter");
 
+        delete.setMinSize(BUTTON_MIN_WIDTH, BUTTON_MIN_HEIGHT);
+        enter.setMinSize(BUTTON_MIN_WIDTH, BUTTON_MIN_HEIGHT);
         gridPane.setAlignment(Pos.CENTER);
         gridPane.setHgap(GAP);
         gridPane.setVgap(GAP);
-        gridPane.add(hBox, 0,0,3,3);
-        setupLetterButtonAndSlecetedLabel(lettersForSelection);
+        gridPane.add(hBox, 0,0);
         gridPane.add(delete, 0, 4);
         gridPane.add(enter, 2, 4);
+        gridPane.setValignment(hBox, VPos.CENTER);
+        gridPane.setHalignment(hBox, HPos.CENTER);
+        gridPane.setHalignment(enter, HPos.CENTER);
+        gridPane.setHalignment(delete, HPos.CENTER);
+
+        setupLetterButtonAndSlecetedLabel(lettersForSelection);
         hadlerDeleted(delete);
     }
+
     // INSTANT METHOD
     public GridPane getGridPane()
     {
@@ -84,18 +98,22 @@ public class ButtonPadAndSelectedLetters {
         {
             polygonButton[index] = new PolygonButton(lettersForSelection.charAt(index));
             handlerLetterButton(polygonButton[index]);
+
             if(currentAmountUpper < AMOUNT_OF_UPPER_LETTER)
             {
+                polygonButton[index].setStyle("-fx-background-color: #e6e6e6");
                 gridPane.add(polygonButton[index], currentAmountUpper, 1);
                 currentAmountUpper++;
             }
             else if(currentAmountMiddle == AMOUNT_OF_MIDDLE_LETTER)
             {
+                polygonButton[index].setStyle("-fx-background-color: #f7da21");
                 gridPane.add(polygonButton[index], currentAmountMiddle, 2);
                 currentAmountMiddle++;
             }
             else
             {
+                polygonButton[index].setStyle("-fx-background-color: #e6e6e6");
                 gridPane.add(polygonButton[index], currentAmountLower, 3);
                 currentAmountLower++;
             }
@@ -110,6 +128,7 @@ public class ButtonPadAndSelectedLetters {
     {
         polygonButton.setOnAction(even->{
             Label selectedLetterLabel = new Label(polygonButton.getText());
+            selectedLetterLabel.setFont(new Font("Courier New", 20));
             labelStack.push(selectedLetterLabel);
             hBox.getChildren().add(labelStack.peek());
         });
@@ -121,7 +140,8 @@ public class ButtonPadAndSelectedLetters {
     private void hadlerDeleted(Button delete)
     {
         delete.setOnAction(even->{
-            deletedLetter();
+            if(!labelStack.empty())
+                deletedLetter();
         });
     }
 }

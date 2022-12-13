@@ -2,18 +2,16 @@ package com.cs272.spellingbee;
 
 import com.cs272.spellingbee.Objects.CorrectWordsList.SinglyLinkedList;
 import com.cs272.spellingbee.Objects.leftSideModular.ButtonPadAndSelectedLetters;
-import com.cs272.spellingbee.Objects.leftSideModular.PolygonButton;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import javafx.scene.layout.Pane;
-import javafx.scene.control.Button;
-import javafx.scene.shape.Polygon;
+import javafx.scene.layout.HBox;
+import javafx.geometry.Pos;
 import javafx.scene.layout.GridPane;
-import javafx.geometry.Insets;
+
 public class SpellingBeeController {
 
     // Instance Variables
@@ -27,7 +25,7 @@ public class SpellingBeeController {
     @FXML
     private Label correctWordCount;
     @FXML
-    private Pane center;
+    private GridPane center;
 
     // we can use this string to test the word;
     private String userSelectedWord;
@@ -37,6 +35,7 @@ public class SpellingBeeController {
     @FXML
     public void initialize(){
         // Sets the display to show current date
+        center.setAlignment(Pos.CENTER);
         currentDateDisplay.setText(getCurrentDate());
 
 
