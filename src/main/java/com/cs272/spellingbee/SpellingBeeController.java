@@ -2,6 +2,9 @@ package com.cs272.spellingbee;
 import com.cs272.spellingbee.Objects.CorrectWordsList.CorrectWordList;
 import com.cs272.spellingbee.Objects.GameVariables.GameVariables;
 
+import com.cs272.spellingbee.Objects.CorrectWordsList.SinglyLinkedList;
+import com.cs272.spellingbee.Objects.leftSideModular.ButtonPadAndSelectedLetters;
+import com.cs272.spellingbee.Objects.leftSideModular.PolygonButton;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -11,7 +14,11 @@ import org.json.simple.parser.ParseException;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-
+import javafx.scene.layout.Pane;
+import javafx.scene.control.Button;
+import javafx.scene.shape.Polygon;
+import javafx.scene.layout.GridPane;
+import javafx.geometry.Insets;
 public class SpellingBeeController {
 
     // Creates a new CorrectWordListClass
@@ -38,6 +45,11 @@ public class SpellingBeeController {
     private ListView<String> correctWordsListView;
     @FXML
     private Label correctWordCount;
+    @FXML
+    private Pane center;
+
+    // we can use this string to test the word;
+    private String userSelectedWord;
 
     public SpellingBeeController() throws ParseException, IOException {
     }
@@ -50,8 +62,31 @@ public class SpellingBeeController {
         currentDateDisplay.setText(getCurrentDate());
 
 
+        // Initialize the girdpane for buttons
+        /* Create a new ButtonPadAndSelectedLetters
+         *  - GridPane gridPane;
+            - HBox hBox;
+            - PolygonButton[] polygonButton;
+            - DynamicStack<Label> labelStack;
+            - Button delete;
+            - Button enter;
+            + getGridPane(): GridPane
+            + deletedLetter: String
+            + getWord: String
+            + getEnter: Button
+         */
+        String letterForSelection = "hikaemr";
+        ButtonPadAndSelectedLetters selection = new ButtonPadAndSelectedLetters(letterForSelection);
+        center.getChildren().add(selection.getGridPane());
+        selection.getEnter().setOnAction(even->{
+            userSelectedWord = selection.getWord();
+            System.out.println(userSelectedWord);
+            //TODO: Check if the word is corrent if it's corrent
+            //      then we can add the corrented word into
+            //      the correctWordList
+        });
 
-        // TODO: REMOVE Test Data
+        // TODO: Remove Test Data
         // Mock Data to test likedList<String> to display
         correctWordList.addWord("Word 1");
         correctWordList.addWord("Word 2");
@@ -65,6 +100,8 @@ public class SpellingBeeController {
 
         // Initializes the correct word count message
         correctWordCount.setText("You have found " + correctWordList.getSize() + " words");
+
+
     }
 
     // Action handler Methods

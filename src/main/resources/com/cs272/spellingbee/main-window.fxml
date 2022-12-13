@@ -24,9 +24,8 @@
     </top>
 
     <center>
-
-
-
+        <Pane fx:id = "center">
+        </Pane>
     </center>
 
     <right>
