@@ -24,8 +24,8 @@
     </top>
 
     <center>
-        <Pane fx:id = "center">
-        </Pane>
+        <GridPane fx:id = "center" alignment="CENTER">
+        </GridPane>
     </center>
 
     <right>

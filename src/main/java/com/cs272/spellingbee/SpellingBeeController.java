@@ -46,7 +46,7 @@ public class SpellingBeeController {
     @FXML
     private Label correctWordCount;
     @FXML
-    private Pane center;
+    private GridPane center;
 
     // we can use this string to test the word;
     private String userSelectedWord;
