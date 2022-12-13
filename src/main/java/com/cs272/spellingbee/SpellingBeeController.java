@@ -1,4 +1,6 @@
 package com.cs272.spellingbee;
+import com.cs272.spellingbee.Objects.CorrectWordsList.CorrectWordList;
+import com.cs272.spellingbee.Objects.GameVariables.GameVariables;
 
 import com.cs272.spellingbee.Objects.CorrectWordsList.SinglyLinkedList;
 import com.cs272.spellingbee.Objects.leftSideModular.ButtonPadAndSelectedLetters;
@@ -7,6 +9,9 @@ import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import org.json.simple.parser.ParseException;
+
+import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import javafx.scene.layout.Pane;
@@ -16,8 +21,22 @@ import javafx.scene.layout.GridPane;
 import javafx.geometry.Insets;
 public class SpellingBeeController {
 
-    // Instance Variables
-    private final SinglyLinkedList<String> correctWordList = new SinglyLinkedList<>();
+    // Creates a new CorrectWordListClass
+    // - SinglyLinkedList<String> correctWordList
+    // + addWord(String word) - adds a word to the list
+    // + getCorrectWordListView(ListView<String> correctWordsListView) - gets the list view of the correct words
+    // + getSize() - gets the size of the list
+    // + removeAll() - removes all the words from the list
+    private final CorrectWordList correctWordList = new CorrectWordList();
+
+    // Creates a new GameVariables object
+    // - String letters
+    // - String centerWord
+    // - StringChainHashSet wordList
+    // + getLetters() : String
+    // + getCenterWord() : String
+    // + checkWord(String word) : boolean
+    private final GameVariables gameVariables = new GameVariables();
 
     // Instance FXML variables
     @FXML
@@ -32,10 +51,13 @@ public class SpellingBeeController {
     // we can use this string to test the word;
     private String userSelectedWord;
 
-    // Initialize function -
+    public SpellingBeeController() throws ParseException, IOException {
+    }
+
+    // Initialize function
     // Initial state of app before it starts
     @FXML
-    public void initialize(){
+    public void initialize() throws ParseException, IOException {
         // Sets the display to show current date
         currentDateDisplay.setText(getCurrentDate());
 
@@ -59,17 +81,21 @@ public class SpellingBeeController {
         selection.getEnter().setOnAction(even->{
             userSelectedWord = selection.getWord();
             System.out.println(userSelectedWord);
-            //TODO: Check if the word is corrent if it's corrent 
+            //TODO: Check if the word is corrent if it's corrent
             //      then we can add the corrented word into
             //      the correctWordList
         });
 
         // TODO: Remove Test Data
         // Mock Data to test likedList<String> to display
-        correctWordList.addLast("Word 1");
-        correctWordList.addLast("Word 2");
-        correctWordList.addLast("Word 3");
+        correctWordList.addWord("Word 1");
+        correctWordList.addWord("Word 2");
+        correctWordList.addWord("Word 3");
         correctWordList.getCorrectWordListView(correctWordsListView);
+
+        System.out.println(gameVariables.getLetters());
+        System.out.println(gameVariables.getCenterWord());
+        System.out.println(gameVariables.checkWord("jjhgjbmjhkjbkj"));
 
 
         // Initializes the correct word count message
@@ -81,14 +107,13 @@ public class SpellingBeeController {
     // Action handler Methods
     @FXML
     public void handleCloseProgramButton() {
-       // Add any additional task to do before closing app
         Platform.exit();
     }
 
     @FXML
     public void handleResetButton() {
-        // TODO:
-        // Clear out the input display
+        // TODO: Clear out the input display
+
 
 
         // Clears out the correct word list
