@@ -77,9 +77,7 @@ public class SpellingBeeController {
 
         // Clears out the correct word list
         if (correctWordList.getSize() > 0) {
-            correctWordList.removeAll();
-            correctWordsListView.getItems().clear();
-            correctWordList.getCorrectWordListView(correctWordsListView);
+            resetCorrectWordList();
         }
 
         // Resets the words count
@@ -103,5 +101,11 @@ public class SpellingBeeController {
         } else {
             selection.assignErrorMessage("You already got this one.");
         }
+    }
+
+    private void resetCorrectWordList() {
+        correctWordList.removeAll();
+        correctWordsListView.getItems().clear();
+        correctWordList.getCorrectWordListView(correctWordsListView);
     }
 }

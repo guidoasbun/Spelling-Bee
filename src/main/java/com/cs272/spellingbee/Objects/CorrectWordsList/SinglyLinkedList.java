@@ -28,36 +28,6 @@ public class SinglyLinkedList<E> {
         size++;
     }
 
-    public void removeFirst() {
-        if (size == 0) {
-            throw new NoSuchElementException("Can not remove first element from an empty list");
-        } else {
-            if (size == 1) {
-                head = null;
-                tail = null;
-            } else {
-                head = head.getNextNode();
-            }
-            size--;
-        }
-    }
-
-    public void removeLast() {
-        if (size == 0) {
-            throw new NoSuchElementException("Can not remove last element from an empty list");
-        } else if (size == 1) {
-            removeFirst();
-        } else {
-            SinglyLinkedListNode<E> currentNode = head;
-            for (int index = 0; index < (size - 2); index++) {
-                currentNode = currentNode.getNextNode();
-            }
-            currentNode.setNextNode(null);
-            tail = currentNode;
-            size--;
-        }
-    }
-
     public int getSize() {
         return (size);
     }
@@ -84,8 +54,8 @@ public class SinglyLinkedList<E> {
     }
 
     public void removeAll() {
-        for (int index = 0; index <= size; index++) {
-            this.removeLast();
-        }
+        this.head = null;
+        this.tail = null;
+        this.size = 0;
     }
 }
