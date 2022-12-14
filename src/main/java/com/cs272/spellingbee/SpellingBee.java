@@ -1,3 +1,7 @@
+// CS272: Extra Credit Spelling Bee
+// Programmers: Guido Asbun
+//              Kuan Lei
+
 package com.cs272.spellingbee;
 
 import javafx.application.Application;

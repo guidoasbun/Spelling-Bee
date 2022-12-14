@@ -11,7 +11,7 @@ public class DynamicArray<E>
     private int numberOfElements;
     private E[] array;
     
-    //CONSTRUCTURE
+    //CONSTRUCTOR
     public DynamicArray()
     {
         numberOfElements = 0;

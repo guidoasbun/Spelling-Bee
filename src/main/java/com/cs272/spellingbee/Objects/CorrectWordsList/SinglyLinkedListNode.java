@@ -1,3 +1,5 @@
+// Programmer: Guido Asbun
+
 package com.cs272.spellingbee.Objects.CorrectWordsList;
 
 public class SinglyLinkedListNode<E> {
