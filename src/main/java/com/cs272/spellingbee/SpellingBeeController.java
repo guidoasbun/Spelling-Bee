@@ -5,7 +5,6 @@ import com.cs272.spellingbee.Objects.GameVariables.GameVariables;
 import com.cs272.spellingbee.Objects.CorrectWordsList.SinglyLinkedList;
 import com.cs272.spellingbee.Objects.GameVariables.StringChainHashSet;
 import com.cs272.spellingbee.Objects.leftSideModular.ButtonPadAndSelectedLetters;
-import com.cs272.spellingbee.Objects.leftSideModular.PolygonButton;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -15,11 +14,10 @@ import org.json.simple.parser.ParseException;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import javafx.scene.layout.Pane;
-import javafx.scene.control.Button;
-import javafx.scene.shape.Polygon;
+import javafx.scene.layout.HBox;
+import javafx.geometry.Pos;
 import javafx.scene.layout.GridPane;
-import javafx.geometry.Insets;
+
 public class SpellingBeeController {
 
     // TODO: Delete test variables
@@ -27,6 +25,7 @@ public class SpellingBeeController {
     private final String letters = "ofwhci";
     private final String centerLetter = "s";
     private final StringChainHashSet wordList = new StringChainHashSet();
+    ButtonPadAndSelectedLetters selection = new ButtonPadAndSelectedLetters(letters, centerLetter);
 
     // Creates a new CorrectWordListClass
     // - SinglyLinkedList<String> correctWordList
@@ -68,6 +67,7 @@ public class SpellingBeeController {
     @FXML
     public void initialize() throws ParseException, IOException {
         // Sets the display to show current date
+        center.setAlignment(Pos.CENTER);
         currentDateDisplay.setText(getCurrentDate());
 
         // TODO: Delete test variables
@@ -75,26 +75,14 @@ public class SpellingBeeController {
         wordList.add("chicos");
         wordList.add("chics");
 
-
-        // Initialize the girdpane for buttons
-        /* Create a new ButtonPadAndSelectedLetters
-         *  - GridPane gridPane;
-            - HBox hBox;
-            - PolygonButton[] polygonButton;
-            - DynamicStack<Label> labelStack;
-            - Button delete;
-            - Button enter;
-            + getGridPane(): GridPane
-            + deletedLetter: String
-            + getWord: String
-            + getEnter: Button
-         */
-        String letterForSelection = "hikaemr";
-        ButtonPadAndSelectedLetters selection = new ButtonPadAndSelectedLetters(letterForSelection);
         center.getChildren().add(selection.getGridPane());
+
         selection.getEnter().setOnAction(even->{
             userSelectedWord = selection.getWord();
-            System.out.println(userSelectedWord);
+            if(selection.checkWordLengthAndCenterLetter(userSelectedWord))
+            {
+                
+            }
             //TODO: Check if the word is corrent if it's corrent
             //      then we can add the corrented word into
             //      the correctWordList
