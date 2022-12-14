@@ -1,50 +1,30 @@
+// CS272: Extra Credit Spelling Bee
+// Programmers: Guido Asbun
+//              Kuan Lei
+
 package com.cs272.spellingbee;
+
 import com.cs272.spellingbee.Objects.CorrectWordsList.CorrectWordList;
 import com.cs272.spellingbee.Objects.GameVariables.GameVariables;
-
-import com.cs272.spellingbee.Objects.CorrectWordsList.SinglyLinkedList;
-import com.cs272.spellingbee.Objects.GameVariables.StringChainHashSet;
 import com.cs272.spellingbee.Objects.leftSideModular.ButtonPadAndSelectedLetters;
+
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import org.json.simple.parser.ParseException;
-
-import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import javafx.scene.layout.HBox;
 import javafx.geometry.Pos;
 import javafx.scene.layout.GridPane;
 
 public class SpellingBeeController {
 
-    // TODO: Delete test variables
-    // Test Variables
-    private final String letters = "ofwhci";
-    private final String centerLetter = "s";
-    private final StringChainHashSet wordList = new StringChainHashSet();
-    ButtonPadAndSelectedLetters selection = new ButtonPadAndSelectedLetters(letters, centerLetter);
-
-    // Creates a new CorrectWordListClass
-    // - SinglyLinkedList<String> correctWordList
-    // + addWord(String word) - adds a word to the list
-    // + getCorrectWordListView(ListView<String> correctWordsListView) - gets the list view of the correct words
-    // + getSize() - gets the size of the list
-    // + removeAll() - removes all the words from the list
+    // Instance Variables
+    private final GameVariables gameVariables = new GameVariables();
+    private final ButtonPadAndSelectedLetters selection = new ButtonPadAndSelectedLetters(gameVariables.getLetters(), gameVariables.getCenterWord());
     private final CorrectWordList correctWordList = new CorrectWordList();
-
-    // This is commented out so we do not make too many calls to API
-    // TODO: uncomment
-    // Creates a new GameVariables object
-    // - String letters
-    // - String centerWord
-    // - StringChainHashSet wordList
-    // + getLetters() : String
-    // + getCenterWord() : String
-    // + checkWord(String word) : boolean
-//    private final GameVariables gameVariables = new GameVariables();
+    private String userSelectedWord;
 
     // Instance FXML variables
     @FXML
@@ -56,44 +36,29 @@ public class SpellingBeeController {
     @FXML
     private GridPane center;
 
-    // we can use this string to test the word;
-    private String userSelectedWord;
-
-    public SpellingBeeController() throws ParseException, IOException {
+    public SpellingBeeController() throws ParseException {
     }
 
     // Initialize function
-    // Initial state of app before it starts
     @FXML
-    public void initialize() throws ParseException, IOException {
+    public void initialize() {
         // Sets the display to show current date
         center.setAlignment(Pos.CENTER);
         currentDateDisplay.setText(getCurrentDate());
 
-        // TODO: Delete test variables
-        wordList.add("chichis");
-        wordList.add("chicos");
-        wordList.add("chics");
-
+        // Initializes word buttons
         center.getChildren().add(selection.getGridPane());
 
-        selection.getEnter().setOnAction(even->{
+        selection.getEnter().setOnAction(even -> {
             userSelectedWord = selection.getWord();
-            if(selection.checkWordLengthAndCenterLetter(userSelectedWord))
-            {
-                
+            if (selection.checkWordLengthAndCenterLetter(userSelectedWord)) {
+                if (gameVariables.checkWord(userSelectedWord)) {
+                    addWordToCorrectWordList(userSelectedWord);
+                } else {
+                    selection.assignErrorMessage("Word is not in the correct word list.");
+                }
             }
-            //TODO: Check if the word is corrent if it's corrent
-            //      then we can add the corrented word into
-            //      the correctWordList
         });
-
-        // TODO: Remove Test Data
-        // Mock Data to test likedList<String> to display
-        correctWordList.addWord("Word 1");
-        correctWordList.addWord("Word 2");
-        correctWordList.addWord("Word 3");
-        correctWordList.getCorrectWordListView(correctWordsListView);
 
         // Initializes the correct word count message
         correctWordCount.setText("You have found " + correctWordList.getSize() + " words");
@@ -110,11 +75,13 @@ public class SpellingBeeController {
         // TODO: Clear out the input display
 
 
-
         // Clears out the correct word list
-        correctWordList.removeAll();
-        correctWordsListView.getItems().clear();
-        correctWordList.getCorrectWordListView(correctWordsListView);
+        if (correctWordList.getSize() > 0) {
+            correctWordList.removeAll();
+            correctWordsListView.getItems().clear();
+            correctWordList.getCorrectWordListView(correctWordsListView);
+        }
+
         // Resets the words count
         correctWordCount.setText("You have found " + correctWordList.getSize() + " words");
     }
@@ -125,5 +92,16 @@ public class SpellingBeeController {
         DateTimeFormatter formattedTime = DateTimeFormatter.ofPattern("MMMM d, yyyy");
         LocalDateTime currentDate = LocalDateTime.now();
         return formattedTime.format(currentDate);
+    }
+
+    private void addWordToCorrectWordList(String word) {
+        if (!correctWordList.checkIfWordIsAlreadyInList(word)) {
+            correctWordList.addWord(word);
+            correctWordsListView.getItems().clear();
+            correctWordList.getCorrectWordListView(correctWordsListView);
+            correctWordCount.setText("You have found " + correctWordList.getSize() + " words");
+        } else {
+            selection.assignErrorMessage("You already got this one.");
+        }
     }
 }

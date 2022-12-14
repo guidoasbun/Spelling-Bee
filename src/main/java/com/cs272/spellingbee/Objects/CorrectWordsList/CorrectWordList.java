@@ -1,3 +1,5 @@
+
+// Programmer: Guido Asbun
 package com.cs272.spellingbee.Objects.CorrectWordsList;
 
 import javafx.scene.control.ListView;
@@ -10,7 +12,7 @@ public class CorrectWordList {
     }
 
     public void addWord(String word) {
-        correctWordList.addLast(word);
+        correctWordList.addLast(word.toUpperCase());
     }
 
     public void getCorrectWordListView(ListView<String> correctWordsListView) {
@@ -23,5 +25,9 @@ public class CorrectWordList {
 
     public void removeAll() {
         correctWordList.removeAll();
+    }
+
+    public Boolean checkIfWordIsAlreadyInList (String word) {
+        return this.correctWordList.occurrences(word.toUpperCase()) > 0;
     }
 }

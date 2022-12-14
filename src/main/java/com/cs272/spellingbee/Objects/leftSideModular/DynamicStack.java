@@ -9,9 +9,9 @@ import java.io.PrintWriter;
 public class DynamicStack<E>
 {
     // INSTANT VARIABLE
-    private DynamicArray<E> stack;
+    private final DynamicArray<E> stack;
     
-    // CONSTRUCTURE
+    // CONSTRUCTOR
     public DynamicStack()
     {
         stack = new DynamicArray<E>();
@@ -25,10 +25,12 @@ public class DynamicStack<E>
     
     public boolean empty()
     {
-        if(stack.getNumberOfElements() == 0)
+        if(stack.getNumberOfElements() == 0) {
             return true;
-        else
-        return false;
+        } else {
+            return false;
+        }
+
     }
     
     public E peek()

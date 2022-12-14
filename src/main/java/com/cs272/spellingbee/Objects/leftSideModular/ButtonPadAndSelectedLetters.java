@@ -30,7 +30,7 @@ public class ButtonPadAndSelectedLetters {
     @FXML
     private Label warning;
 
-    // CONSTRUCTURE
+    // CONSTRUCTOR
     public ButtonPadAndSelectedLetters(String lettersForSelection, String centerLetter)
     {
         String allLetters = lettersForSelection.substring(0,3);
@@ -58,8 +58,8 @@ public class ButtonPadAndSelectedLetters {
         gridPane.setHalignment(enter, HPos.CENTER);
         gridPane.setHalignment(delete, HPos.CENTER);
 
-        setupLetterButtonAndSlecetedLabel(allLetters);
-        hadlerDeleted(delete);
+        setupLetterButtonAndSelectedLabel(allLetters);
+        handleDeleted(delete);
     }
 
     // INSTANT METHOD
@@ -105,12 +105,16 @@ public class ButtonPadAndSelectedLetters {
         return true;
     }
 
+    public void assignErrorMessage(String message) {
+        labelForWarning.setText(message);
+    }
+
     // PRIVATE HELPER FUNCTION
     /* 
-     * setupLetterButtonAndSlecetedLabel
+     * setupLetterButtonAndSelectedLabel
      * helper function to set up the button with the letter and their location
     */
-    private void setupLetterButtonAndSlecetedLabel(String lettersForSelection)
+    private void setupLetterButtonAndSelectedLabel(String lettersForSelection)
     {
         int currentAmountUpper = 0;
         int currentAmountMiddle = 1;
@@ -147,7 +151,6 @@ public class ButtonPadAndSelectedLetters {
      */
     private void handlerLetterButton(PolygonButton polygonButton)
     {
-        // TODO: limite to 10
         polygonButton.setOnAction(even->{
             if(labelForWarning.getText().length() > 0)
                 labelForWarning.setText("");  
@@ -167,12 +170,10 @@ public class ButtonPadAndSelectedLetters {
         });
     }
 
-
-
     /*
-     * private helper fucntion for handler the delete
+     * private helper function for handler the delete
      */
-    private void hadlerDeleted(Button delete)
+    private void handleDeleted(Button delete)
     {
         delete.setOnAction(even->{
             if(!labelStack.empty())

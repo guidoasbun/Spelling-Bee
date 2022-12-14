@@ -1,9 +1,11 @@
+// Programmer: Guido Asbun
+
 package com.cs272.spellingbee.Objects.GameVariables;
 
 public class StringChainHashSetNode {
     // Instance variables
     private final String element;
-    private StringChainHashSetNode nextNode;
+    private final StringChainHashSetNode nextNode;
 
     // Constructor
     public StringChainHashSetNode(String element, StringChainHashSetNode nextNode) {
@@ -20,7 +22,4 @@ public class StringChainHashSetNode {
         return nextNode;
     }
 
-    public void setNextNode(StringChainHashSetNode nextNode) {
-        this.nextNode = nextNode;
-    }
 }

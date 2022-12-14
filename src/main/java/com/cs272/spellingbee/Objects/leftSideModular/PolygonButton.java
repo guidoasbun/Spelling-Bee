@@ -1,3 +1,4 @@
+//Programmer: Kuan Lei
 package com.cs272.spellingbee.Objects.leftSideModular;
 
 import javafx.scene.control.Button;
@@ -11,7 +12,7 @@ public class PolygonButton extends Button{
     private final Font font = new Font("Courier New", 36);
     private Polygon polygon;
     
-    // CONSTRUCTURE
+    // CONSTRUCTOR
     public PolygonButton()
     {
         polygon = new Polygon();
@@ -27,10 +28,10 @@ public class PolygonButton extends Button{
         super.setFont(font);
     }
 
-    public PolygonButton(char selctionLetter)
+    public PolygonButton(char selectionLetter)
     {
         this();
-        setLetter(Character.toUpperCase(selctionLetter));
+        setLetter(Character.toUpperCase(selectionLetter));
     }
 
     // INSTANT METHOD

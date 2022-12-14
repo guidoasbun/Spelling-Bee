@@ -1,3 +1,5 @@
+// Programmer: Guido Asbun
+
 package com.cs272.spellingbee.Objects.GameVariables;
 
 import org.json.simple.JSONArray;
@@ -16,7 +18,6 @@ public class GameVariables {
 
     public GameVariables() throws ParseException {
         StringBuilder gameVariablesData =  new StringBuilder();
-        int responseCode = 0;
         Object objectToParse;
         try {
             URL url = new URL("https://freebee.fun/cgi-bin/today");
@@ -25,7 +26,7 @@ public class GameVariables {
             connection.connect();
 
             // Check to see if connection is made
-            responseCode = connection.getResponseCode();
+            int responseCode = connection.getResponseCode();
 
             // code 200 is good
             if(responseCode != 200) {
