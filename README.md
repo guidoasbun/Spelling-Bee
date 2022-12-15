@@ -8,6 +8,10 @@
 | Guido Asbun / Engineering | [LinkedIn](https://www.linkedin.com/in/guidoasbun/)            | [GitHub](https://github.com/guidoasbun) |
 | Kuan Lei / Engineering    | [LinkedIn](https://www.linkedin.com/in/kuanioi-lei-17ab19156/) | [GitHub](https://github.com/kuan1219)   |
 
+## GitHub Repo
+
+- [https://github.com/guidoasbun/Spelling-Bee](https://github.com/guidoasbun/Spelling-Bee)
+
 ## Description
 
 - Make words from the 7 letters in the bee hive.
