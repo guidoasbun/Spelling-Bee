@@ -14,6 +14,7 @@ import java.util.Scanner;
 public class GameVariables {
     private final String letters;
     private final String centerWord;
+    private Long totalCorrectWords;
     private final StringChainHashSet wordList = new StringChainHashSet();
 
     public GameVariables() throws ParseException {
@@ -53,6 +54,7 @@ public class GameVariables {
 
         this.letters = (String) jsonObject.get("letters");
         this.centerWord = (String) jsonObject.get("center");
+        this.totalCorrectWords = (Long) jsonObject.get("words");
         JSONArray array = (JSONArray) jsonObject.get("wordlist");
         for (Object word : array) {
             wordList.add((String) word);
@@ -65,6 +67,10 @@ public class GameVariables {
 
     public  String getCenterWord() {
         return this.centerWord;
+    }
+
+    public Long getTotalCorrectWords() {
+        return this.totalCorrectWords;
     }
 
     public Boolean checkWord(String word) {

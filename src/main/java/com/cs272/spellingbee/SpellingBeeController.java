@@ -61,7 +61,7 @@ public class SpellingBeeController {
         });
 
         // Initializes the correct word count message
-        correctWordCount.setText("You have found " + correctWordList.getSize() + " words");
+        updateCorrectWordCount();
     }
 
     // Action handler Methods
@@ -81,7 +81,7 @@ public class SpellingBeeController {
         }
 
         // Resets the words count
-        correctWordCount.setText("You have found " + correctWordList.getSize() + " words");
+        updateCorrectWordCount();
     }
 
     // Private Helper Functions
@@ -97,7 +97,7 @@ public class SpellingBeeController {
             correctWordList.addWord(word);
             correctWordsListView.getItems().clear();
             correctWordList.getCorrectWordListView(correctWordsListView);
-            correctWordCount.setText("You have found " + correctWordList.getSize() + " words");
+            updateCorrectWordCount();
         } else {
             selection.assignErrorMessage("You already got this one.");
         }
@@ -107,5 +107,11 @@ public class SpellingBeeController {
         correctWordList.removeAll();
         correctWordsListView.getItems().clear();
         correctWordList.getCorrectWordListView(correctWordsListView);
+    }
+
+    public void updateCorrectWordCount() {
+        correctWordCount.setText("You have found " + correctWordList.getSize()
+                + (correctWordList.getSize() == 1 ? " word out of " : " words out of ")
+                + gameVariables.getTotalCorrectWords());
     }
 }
