@@ -1,6 +1,6 @@
 # Spelling Bee
 
-![SpellingBeeGame.png](images/SpellingBeeGame.png)
+![SpellingBeeGame.png](images/SpellingBeeGame2.png)
 
 ## Programmers
 | Name / Role               | LinkedIn                                                       | GitHub                                  |
